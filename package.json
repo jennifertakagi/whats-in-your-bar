@@ -1,0 +1,20 @@
+{
+  "name": "whats-in-your-bar",
+  "version": "1.0.0",
+  "description": "Discover which drink to make with all you have on your bar",
+  "scripts": {
+    "start": "cd api && node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennifertakagi/whats-in-your-bar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennifertakagi/whats-in-your-bar/issues"
+  },
+  "homepage": "https://github.com/jennifertakagi/whats-in-your-bar#readme"
+}
