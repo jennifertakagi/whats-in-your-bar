@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jennifertakagi/whats-in-your-bar/issues"
   },
-  "homepage": "https://github.com/jennifertakagi/whats-in-your-bar#readme"
+  "homepage": "https://github.com/jennifertakagi/whats-in-your-bar#readme",
+  "engines": {
+    "node": "12.9.1"
+  }
 }

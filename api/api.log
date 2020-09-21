@@ -1,6 +1,0 @@
-2020-09-21T20:00:20.394Z [api.log] info: Starting the MongoDB connection
-2020-09-21T20:00:23.025Z [api.log] info: Connected to MongoDB!
-2020-09-21T20:03:39.940Z [api.log] info: Starting the MongoDB connection
-2020-09-21T20:03:43.030Z [api.log] info: Connected to MongoDB!
-2020-09-21T20:03:43.046Z [api.log] info: API started
-2020-09-21T20:04:03.196Z [api.log] info: GET /drink - {}
