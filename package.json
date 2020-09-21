@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Discover which drink to make with all you have on your bar",
   "scripts": {
-    "start": "cd api && node index.js"
+    "start": "cd api && npm install && node index.js"
   },
   "repository": {
     "type": "git",
