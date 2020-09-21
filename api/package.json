@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "clean": "rm package-lock.json && rm -Rf node_modules",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "clean": "rm package-lock.json && rm -Rf node_modules"
   },
   "repository": {
     "type": "git",
