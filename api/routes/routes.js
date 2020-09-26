@@ -2,7 +2,8 @@ const express = require('express');
 const drinkRouter = express.Router();
 const DrinkController = require('../controller/DrinkController');
 
-drinkRouter.get('/', DrinkController.getDrink);
+drinkRouter.get('/allIngredients', DrinkController.getAllIngredients);
+drinkRouter.get('/', DrinkController.getDrinksByIngredients);
 
 drinkRouter.use((error, req, res, next) => {
   logger.error(`${req.method} ${req.baseUrl} ${error.message}`);
