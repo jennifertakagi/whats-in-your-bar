@@ -1,0 +1,23 @@
+:root {
+    --color-background: #dfe6e9;
+    --color-text-title: #6c5ce7;
+    --color-text-complement: #a29bfe;
+    --earning-text: #00b894;
+    --expenses-text: #fab1a0
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background: var(--color-background);
+    font-family: 'Josefin Sans', sans-serif;
+}
