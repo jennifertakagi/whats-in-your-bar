@@ -1,0 +1,32 @@
+button {
+  width: 75%;
+  height: 52px;
+  background: var(--color-secondary);
+  color: var(--white);
+  border: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  margin: 3.5rem auto;
+}
+
+button:hover {
+  background: var(--color-primary);
+}
+
+button:focus {
+  background: var(--color-primary);
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  button {
+    width: 33%;
+  }
+}
