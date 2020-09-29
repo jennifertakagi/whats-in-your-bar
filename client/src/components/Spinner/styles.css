@@ -1,0 +1,11 @@
+#spinner img {
+  width: 40%;
+  margin: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #spinner img {
+    width: 12%;
+  }
+}
