@@ -1,5 +1,5 @@
 <p align="left">
-   <img src="docs/cocktail.png" width="150"/>
+   <img src="docs/logo.png" width="100"/>
 </p>
 
 # What's in you bar?
