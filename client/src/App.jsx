@@ -62,7 +62,6 @@ export default function App() {
    * @param {Array} selectedIngredients list of selected ingredients
    */
   function handleSelectIngredients(selectedIngredients) {
-    console.log(selectedIngredients)
     setSelectedIngredients(selectedIngredients);
   }
 

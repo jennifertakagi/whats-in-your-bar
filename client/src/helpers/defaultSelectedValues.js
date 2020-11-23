@@ -1,4 +1,6 @@
 export const defaultSelectedValues = [
   { value: 'ice', label: 'ice' },
-  { value: 'water', label: 'water' }
+  { value: 'salt', label: 'salt' },
+  { value: 'sugar', label: 'sugar' },
+  { value: 'water', label: 'water' },
 ]
