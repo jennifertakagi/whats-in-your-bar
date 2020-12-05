@@ -13,7 +13,7 @@ button {
   justify-content: center;
   text-decoration: none;
   transition: background-color 0.2s;
-  margin: 3.5rem auto;
+  margin: 2.5rem auto 0;
 }
 
 button:hover {
