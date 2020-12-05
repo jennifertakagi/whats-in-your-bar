@@ -1,38 +1,38 @@
 const mongoose = require('mongoose');
 
 const drinkSchema = mongoose.Schema({
-  category:  {
+  category: {
     type: String,
-    require: true
+    require: true,
   },
   drink_type: {
     type: String,
-    require: true
+    require: true,
   },
   glass_type: {
     type: String,
-    require: true
+    require: true,
   },
   image: {
     type: String,
-    require: true
+    require: true,
   },
   ingredients: {
     type: Array,
-    require: true
+    require: true,
   },
   instructions: {
     type: String,
-    require: true
+    require: true,
   },
-  measurements_ingredients:  {
+  measurements_ingredients: {
     type: Array,
-    require: true
+    require: true,
   },
   name: {
     type: String,
-    require: true
-  }
+    require: true,
+  },
 });
 
 const drinkModel = mongoose.model('drinks', drinkSchema);
