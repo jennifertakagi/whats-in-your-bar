@@ -48,12 +48,14 @@ class DrinkController {
    */
   async getDrinksByIngredients(request, response, next) {
     try {
-      const { ingredients } = request.query;
+      const { ingredients, limitSearch } = request.query;
       const ownIngredients = ingredients.split(',');
       const drinksDB = await servicesDB.getDrinksByIngredientsFromDB(
         ownIngredients,
       );
-      const possibleDrinks = await filterDrinks(ownIngredients, drinksDB);
+      const possibleDrinks = limitSearch === 'true'
+        ? await filterDrinks(ownIngredients, drinksDB)
+        : drinksDB;
 
       response.send({
         status: 'ok',
@@ -62,6 +64,28 @@ class DrinkController {
       });
 
       logger.info(`GET /drinks/ - ${JSON.stringify(possibleDrinks)}`);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+    /**
+   * Gets a random drinks from database
+   * @param {Object} request request object
+   * @param {Object} response response object
+   * @param {Function} next next function
+   */
+   async getRandomDrink(request, response, next) {
+    try {
+      const drinkDB = await servicesDB.getRandomDrinkFromDB();
+
+      response.send({
+        status: 'ok',
+        size: drinkDB.length,
+        drinks: drinkDB,
+      });
+
+      logger.info(`GET /drinks/random - ${JSON.stringify(drinkDB)}`);
     } catch (error) {
       next(error);
     }

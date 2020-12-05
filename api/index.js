@@ -60,12 +60,12 @@ const { connection } = mongoose;
 
 connection.once('open', () => {
   connectedToMongoDB = true;
-  logger.info('Connected to MongoDB!');
+  logger.info('Connected to MongoDB! 📈');
 
   const APP_PORT = process.env.PORT || 3031;
   app.listen(APP_PORT, () => {
     try {
-      logger.info('API started');
+      logger.info(`API started on port ${APP_PORT} 🚪`);
     } catch(error) {
       logger.error(error);
     }
