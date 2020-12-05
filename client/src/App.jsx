@@ -8,9 +8,9 @@ import {defaultSelectedValues} from './helpers/defaultSelectedValues';
 import './assets/styles/global.css';
 
 export default function App() {
-  const [defaultIngredients, setDefaultIngredients] = useState(defaultSelectedValues);
   const [drinks, setDrinks] = useState([]);
   const [ingredientsDB, setIngredientsDB] = useState([]);
+  const [limitSearch, setLimitSearch] = useState(true);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
   const [notFoundDrinks, setNotFoundDrinks] = useState(false);
@@ -31,28 +31,30 @@ export default function App() {
 
   useEffect(() => {
     getIngredientsFromDB();
+    setSelectedIngredients(defaultSelectedValues);
   }, []);
 
   /**
-   * Gets the matched drinks from database, and sets them on state
+   * Gets drinks from database, and sets them on state
+   * @param {boolean} random - flag to search a random drink
    */
-  function getDrinksByIngredientsFromDB(buttonClicked) {
+  function searchDrinksOnDB({ random }) {
+    setNotFoundDrinks(false);
+
     const queryIngredients = mountIngredientsQuery(selectedIngredients);
-    
-    setShowLoading(buttonClicked);
-    
-    api.get(`/drinks/?ingredients=${queryIngredients}`)
+    const route = random ? '/drinks/random' : `/drinks/?ingredients=${queryIngredients}&limitSearch=${limitSearch}`;
+
+    setShowLoading(true);
+
+    api.get(route)
       .then((response) => {
-        const { data = {} } = response;
-        const drinksDB = data.drinks || [];
+        const { data: { drinks: drinksDB = [] }= {} } = response;
 
         setTimeout(() => {
           setShowLoading(false);
           setDrinks(drinksDB);
 
-          if (!drinksDB.length) {
-            setNotFoundDrinks(true);
-          }
+          if (!drinksDB.length) setNotFoundDrinks(true);
         }, 1000);
       });
   }
@@ -65,15 +67,20 @@ export default function App() {
     setSelectedIngredients(selectedIngredients);
   }
 
+  function handleLimitSearch() {
+    setLimitSearch(!limitSearch)
+  }
+
   return (
     <div className="container" id="main-page">
       <MainPage
-        defaultIngredients={defaultIngredients}
-        getDrinksByIngredientsFromDB={getDrinksByIngredientsFromDB}
+        defaultIngredients={defaultSelectedValues}
         handleSelectIngredients={handleSelectIngredients}
         ingredients={ingredientsDB}
+        handleLimitSearch={handleLimitSearch}
         matchedDrinks={drinks}
         showLoading={showLoading}
+        searchDrinksOnDB={searchDrinksOnDB}
         notFoundDrinks={notFoundDrinks}
       />
     </div>

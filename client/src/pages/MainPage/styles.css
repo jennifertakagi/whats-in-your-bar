@@ -8,11 +8,17 @@
   font-size: 1.5rem;
   color: var(--color-secondary-dark);
   text-align: center;
+  margin-top: 10%;
 }
+
 
 
 @media (min-width: 768px) {
   .not-found-text {
     font-size: 2rem;
+  }
+
+  .buttons-row {
+    display: flex;
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+
 import Button from '../../components/Button';
+import Checkbox from '../../components/Checkbox';
 import DrinkItem from '../../components/DrinkItem';
 import Spinner from '../../components/Spinner';
 
@@ -9,11 +11,12 @@ import './styles.css';
 
 function MainPage({
   defaultIngredients = [],
-  getDrinksByIngredientsFromDB,
+  handleLimitSearch,
   handleSelectIngredients,
   ingredients = [],
   matchedDrinks = [],
   notFoundDrinks = false,
+  searchDrinksOnDB,
   showLoading = false
 }) {
   const customSelectStyles = {
@@ -42,10 +45,6 @@ function MainPage({
     />
   );
 
-  function handleSearchDrink() {
-    getDrinksByIngredientsFromDB(true);
-  }
-
   return (
     <>
       <h1>What's in your bar?</h1>
@@ -54,15 +53,29 @@ function MainPage({
           classNamePrefix="select"
           isMulti
           name="ingredients"
-          options={ ingredients }
+          options={ingredients}
           onChange={(selectedIngredients) => handleSelectIngredients(selectedIngredients)}
           styles={customSelectStyles}
           defaultValue={defaultIngredients}
         />
-        <Button
-          handleClickButton={handleSearchDrink}
-          label="search drinks"
+
+        <Checkbox
+          id="notLimitedIngredients"
+          label="I don't want to limit the search to all chosen ingredients"
+          handleSelectCheckbox={() => handleLimitSearch(true)}
         />
+
+        <div className="buttons-row">
+          <Button
+            handleClickButton={() => searchDrinksOnDB({ random: false })}
+            label="search drinks"
+          />
+          <Button
+            handleClickButton={() => searchDrinksOnDB({ random: true })}
+            label="random drink"
+          />
+        </div>
+
         {showLoading
           ? <Spinner />
           : notFoundDrinks
@@ -75,11 +88,12 @@ function MainPage({
 
 MainPage.propTypes = {
   defaultIngredients: PropTypes.array,
-  getDrinksByIngredientsFromDB: PropTypes.func.isRequired,
+  handleLimitSearch: PropTypes.func,
   handleSelectIngredients: PropTypes.func.isRequired,
   ingredientsDB: PropTypes.array,
   matchedDrinks: PropTypes.array,
   notFoundDrinks: PropTypes.bool,
+  searchDrinksOnDB: PropTypes.func.isRequired,
   showLoading: PropTypes.bool
 };
 
