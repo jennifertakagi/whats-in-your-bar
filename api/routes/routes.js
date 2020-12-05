@@ -5,6 +5,7 @@ const DrinkController = require('../controller/DrinkController');
 
 drinkRouter.get('/allIngredients', DrinkController.getAllIngredients);
 drinkRouter.get('/', DrinkController.getDrinksByIngredients);
+drinkRouter.get('/random', DrinkController.getRandomDrink);
 
 drinkRouter.use((error, req, res) => {
   logger.error(`${req.method} ${req.baseUrl} ${error.message}`);

@@ -31,7 +31,14 @@ async function getDrinksByIngredientsFromDB(ownIngredients) {
   return drinksDB;
 }
 
+async function getRandomDrinkFromDB() {
+  const randomDrinkDB = await DrinkModel.aggregate([{ $sample: { size: 1 } }])
+
+  return randomDrinkDB;
+}
+
 module.exports = {
   getIngredientsFromDB,
   getDrinksByIngredientsFromDB,
+  getRandomDrinkFromDB
 };
