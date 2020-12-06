@@ -41,7 +41,7 @@ export default function App() {
   function searchDrinksOnDB({ random }) {
     setNotFoundDrinks(false);
 
-    const queryIngredients = mountIngredientsQuery(selectedIngredients);
+    const queryIngredients = mountIngredientsQuery(selectedIngredients || []);
     const route = random ? '/drinks/random' : `/drinks/?ingredients=${queryIngredients}&limitSearch=${limitSearch}`;
 
     setShowLoading(true);
@@ -69,6 +69,13 @@ export default function App() {
 
   function handleLimitSearch() {
     setLimitSearch(!limitSearch)
+
+    if (limitSearch) {
+      const ingredients = selectedIngredients.filter(ingredient => !defaultSelectedValues.includes(ingredient))
+      setSelectedIngredients(ingredients)
+    } else {
+      setSelectedIngredients(selectedIngredients, ...defaultSelectedValues)
+    }
   }
 
   return (
