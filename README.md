@@ -30,7 +30,9 @@
 # :rocket: Features
 
 * Select all ingredients that are on you bar
-* Discover which drinks you can make *-*
+* Discover which drinks you can make with this ingredients *-*
+* Discover which drinks you can make with this ingredients but not limit the search
+* Discover a random drink today!
 
 # :framed_picture: UI Documentation
 This project has a UI Documentation of reusable components, allowing to test them individually.
@@ -53,13 +55,17 @@ SSH URLs provide access to a Git repository via SSH, a secure protocol. If you h
 
 You need to install the dependences in api and client folder, so **run the above command on root and in each of this folders**:
 
-```npm install```
+```cd api && npm install```
+
+```cd client && yarn```
 
 # :runner: Getting Started
 
 Run the following command in **api and client** folder start the application in a development environment:
 
-```npm start```
+```cd api && npm start```
+
+```cd client && yarn start```
 
 
 # :postbox: Faq
@@ -80,4 +86,3 @@ Check out the [contributing](https://github.com/jennifertakagi/whats-in-your-bar
 
 Released in 2020.
 This project is under the [MIT license](https://github.com/jennifertakagi/whats-in-your-bar/master/LICENSE).
-
