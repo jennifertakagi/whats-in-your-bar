@@ -59,7 +59,12 @@
     width: 20%;
     margin: 0 2rem 0 0;
   }
-  
+
+  .drink-card .image-box img {
+    width: 250px;
+    height: 239px;
+  }
+
   .drink-card .information-box .name-separator {
     width: 55%;
   }
